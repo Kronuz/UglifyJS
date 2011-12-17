@@ -259,11 +259,14 @@ function output(text) {
 function show_copyright(comments) {
         var ret = "";
         for (var i = 0; i < comments.length; ++i) {
-                var c = comments[i];
-                if (c.type == "comment1") {
-                        ret += "//" + c.value + "\n";
-                } else {
-                        ret += "/*" + c.value + "*/";
+                var c = comments[i],
+                    v = c.value;
+                if (v[0] == '!') {
+                    if (c.type == "comment1") {
+                            ret += "//" + v + "\n";
+                    } else {
+                            ret += "/*" + v + "*/";
+                    }
                 }
         }
         return ret;
