@@ -261,7 +261,7 @@ function show_copyright(comments) {
         for (var i = 0; i < comments.length; ++i) {
                 var c = comments[i],
                     v = c.value;
-                if (v[0] == '!') {
+                if (v[0] == '!' || ~v.indexOf('@license') || ~v.indexOf('@preserve')) {
                     if (c.type == "comment1") {
                             ret += "//" + v + "\n";
                     } else {
